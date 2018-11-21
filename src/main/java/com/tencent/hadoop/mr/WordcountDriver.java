@@ -20,8 +20,8 @@ public class WordcountDriver {
 	
 	public static void main(String[] args) throws Exception {
 		
-		if(args != null && args.length != 2){
-       	    System.err.println("Usage: <inputpath> <outputpath>");
+		if(args == null || args.length != 5){
+       	    System.err.println("Usage: <inputpath> <outputpath> <secureid> <username> <securekey> ");
             System.exit(1);
         }
 		
