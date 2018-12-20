@@ -39,6 +39,23 @@
             <artifactId>hadoop-hdfs</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+        
+        <dependency>
+			<groupId>com.travelsky</groupId>
+			<artifactId>common-snmp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/mysql-connector-java-5.1.34.jar</systemPath>
+		</dependency>
+		
+		 <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/fastjson-1.2.7.jar</systemPath>
+		</dependency>
+		
         <dependency> 
     <groupId>org.apache.kafka</groupId>
     <artifactId>kafka-clients</artifactId>

@@ -25,7 +25,7 @@ public class ConfigurationManager {
             // 就可以用类加载器，去加载类加载路径中的指定的文件
             // 最终可以获取到一个，针对指定文件的输入流（InputStream）
             InputStream in = ConfigurationManager.class
-                    .getClassLoader().getResourceAsStream("my.properties");
+                    .getClassLoader().getResourceAsStream("ctsdb.properties");
             // 调用Properties的load()方法，给它传入一个文件的InputStream输入流
             // 即可将文件中的符合“key=value”格式的配置项，都加载到Properties对象中
             // 加载过后，此时，Properties对象中就有了配置文件中所有的key-value对了
@@ -43,5 +43,28 @@ public class ConfigurationManager {
      */
     public static String getProperty(String key) {
         return prop.getProperty(key);
+    }
+    
+	/**
+	 * 获取整数类型的配置项
+	 * @param key
+	 * @return value
+	 */
+	public static Integer getInteger(String key) {
+		String value = getProperty(key);
+		try {
+			return Integer.valueOf(value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	/**
+	 * 赋值Property
+	 * @param key
+	 * @param value
+	 */
+    public static void setProperty(String key,String value) {
+        prop.setProperty(key, value);
     }
 }

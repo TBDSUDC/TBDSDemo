@@ -46,12 +46,13 @@ public final class JavaDirectKafkaWordCount {
 
   public static void main(String[] args) throws Exception {
 	//这两个参数可以传过来  
-	String topic = "tbdstopic";
-	String bootstrapServers = "tbds-10-0-0-129:6667,tbds-10-0-0-138:6667,tbds-10-0-0-96:6667";
+    String topic = args[0];  //设置topic参数,这里由开发者自行设置
+    String bootstrapServers = args[1]; //设置kafka broker参数,这里由开发者自行设置
+    String kafak_tbds_sasl_id=args[2]; //设定kafka的认证id
+    String kafak_tbds_sasl_key=args[3]; //设定kafka的认证key
 
     SparkConf conf = new SparkConf();
-    conf.setAppName("JavaDirectKafkaWordCount");
-//    conf.setMaster("local[2]");
+    conf.setAppName("spark-kafka-demo");  //设置spark application的名称
     //创建Spark流应用上下文
     JavaStreamingContext streamingContext = new JavaStreamingContext(conf, Seconds.apply(5));
 
@@ -59,12 +60,12 @@ public final class JavaDirectKafkaWordCount {
     kafkaParams.put("bootstrap.servers", bootstrapServers);
     kafkaParams.put("key.deserializer", StringDeserializer.class);
     kafkaParams.put("value.deserializer", StringDeserializer.class);
-    kafkaParams.put("group.id", "tbds_spark_streaming_group");
-    kafkaParams.put("auto.offset.reset", "earliest");//"latest"/"earliest",
-    kafkaParams.put("security.protocol", "SASL_TBDS");
-    kafkaParams.put("sasl.mechanism", "TBDS");
-    kafkaParams.put("sasl.tbds.secure.id", "bKOR6pQIidBAydmwGwG661udh434fNxHWrc4");
-    kafkaParams.put("sasl.tbds.secure.key", "w5Wx5ipT2xq2J7alOJIzzi4kKET0ErbO");
+    kafkaParams.put("group.id", "spark_kafka_consumer_group");  //设置kafka的消费组名称
+    kafkaParams.put("auto.offset.reset", "earliest"); //设置kafka消费的offset,可以设置"latest"/"earliest",当然这里开发者也可以使用其它接口设置任意的消费起始位置offset
+    kafkaParams.put("security.protocol", "SASL_TBDS"); //固定值,Kafka认证参数设置
+    kafkaParams.put("sasl.mechanism", "TBDS");//固定值,Kafka认证参数设置
+    kafkaParams.put("sasl.tbds.secure.id", kafak_tbds_sasl_id);
+    kafkaParams.put("sasl.tbds.secure.key", kafak_tbds_sasl_key);
     kafkaParams.put("enable.auto.commit", false);
 
 
@@ -93,7 +94,7 @@ public final class JavaDirectKafkaWordCount {
         }
     });
 
-    //映射成元组
+  ///映射成元组
     JavaPairDStream<String, Integer> pairDS = wordsDS.mapToPair(new PairFunction<String, String, Integer>() {
 		private static final long serialVersionUID = 1L;
 		public Tuple2<String, Integer> call(String s) throws Exception {

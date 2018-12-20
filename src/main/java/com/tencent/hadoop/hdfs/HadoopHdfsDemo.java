@@ -39,6 +39,8 @@ public class HadoopHdfsDemo{
 
             //拿到一个文件系统操作的客户端实例对象
             fs = FileSystem.get(conf) ;
+            
+            
             Path basePath = new Path(args[3]);
             
 //          FileStatus[] listStatus = fs.listStatus(basePath);
