@@ -145,13 +145,13 @@ public class ExportDataFromTimeSeriesDB {
     	String validDataTime = ConfigurationManager.getProperty("ctsdb.validDataTime");
     	
     	if(colNames != null && colNames.trim().length() > 0){
-    		colNames.trim().replaceAll(",", "\",\"");
+    		colNames = colNames.trim().replaceAll(",", "\",\"");
     		
     		colNames = "\""+colNames+"\"";
     	}
     	
     	long startTime = System.currentTimeMillis();
-    	System.out.println("--------------------------------startTime:"+startTime);
+//    	System.out.println("--------------------------------startTime:"+startTime);
     	long sumCount = 0;
     	int fileNum = 0;
     	int sumBatchNum = 0;
@@ -177,6 +177,9 @@ public class ExportDataFromTimeSeriesDB {
     	String batchParam = null;
     	
         String resultJson=ExportDataFromTimeSeriesDB.sendPost(initSql, jsonParam);
+        
+        System.out.println(initSql+"------------"+jsonParam);
+        
         JSONObject object = JSON.parseObject(resultJson);
         String _scroll_id = object.getString("_scroll_id");
         
