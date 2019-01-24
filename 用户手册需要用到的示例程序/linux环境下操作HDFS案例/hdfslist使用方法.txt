@@ -1,0 +1,12 @@
+方法一：
+提交任务：
+hadoop jar hdfslist-1.0-SNAPSHOT.jar com.hadooptest.hdfslist.HdfsAccess wPl9zgEpT4pJlxKbv2mHrpJEPt9q3q56yFnp testuser LluWnYeM2qtaxqEwzGXwFftvCvNJ1g4F
+有三个参数：
+参数1：wPl9zgEpT4pJlxKbv2mHrpJEPt9q3q56yFnp 表示id
+参数2：testuser 表示用户名
+参数3：LluWnYeM2qtaxqEwzGXwFftvCvNJ1g4F 表示key
+
+
+
+方法二：
+java -Djava.library.path=/usr/hdp/2.2.0.0-2041/hadoop/lib/native/:/usr/hdp/2.2.0.0-2041/hadoop/lib/native/Linux-amd64-64/ -classpath ./hdfslist-1.0-SNAPSHOT.jar:/usr/hdp/2.2.0.0-2041/hadoop/client/*:/etc/hadoop/conf com.hadooptest.hdfslist.HdfsAccess wPl9zgEpT4pJlxKbv2mHrpJEPt9q3q56yFnp testuser LluWnYeM2qtaxqEwzGXwFftvCvNJ1g4F

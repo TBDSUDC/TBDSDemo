@@ -1,0 +1,14 @@
+一、首先设置HADOOP_CLASSPATH环境变量：
+export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/usr/hdp/2.2.0.0-2041/hbase/*:/usr/hdp/2.2.0.0-2041/hbase/lib/*":/etc/hbase/conf;
+
+
+二、运行程序：
+
+hadoop jar hbasetbdsmaven-1.0-SNAPSHOT.jar com.hbasetest.hbasetbdsmaven.Testhtable 172.16.16.4:2181 /hbase-unsecure testtbable0208 10 erh2xzLl1RoU5TDSbZpiaexk7zKBCMtJCNZY TYL2c0ri9CfUZGpKI8WcUiFVJf3aTRUY
+
+172.16.16.4:2181     表示zkhost
+/hbase-unsecure      表示zkznode
+testtbable0208       表示想要建立的hbase表名称；
+10                   表示你想要插入的rowkey 数量
+erh2xzLl1RoU5TDSbZpiaexk7zKBCMtJCNZY      表示hbase认证id
+TYL2c0ri9CfUZGpKI8WcUiFVJf3aTRUY          表示hbase认证key

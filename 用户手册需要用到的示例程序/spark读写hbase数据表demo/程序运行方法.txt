@@ -1,0 +1,10 @@
+一、首先设置HADOOP_CLASSPATH环境变量：
+为了让spark程序能够使用hbase相关的架包，需要将hbase相关的架包和配置文件放到spark的配置参数：spark.executor.extraClassPath 和 spark.driver.extraClassPath ，通过修改ambari管理界面的spark配置文件即可：
+spark.executor.extraClassPath         /usr/hdp/2.2.0.0-2041/hbase/lib/*:/etc/hbase/conf:/usr/hdp/2.2.0.0-2041/hadoop-yarn/lib/hadoop-lzo-0.6.0.2.2.0.0-2041.jar
+spark.driver.extraClassPath            /usr/hdp/2.2.0.0-2041/hbase/lib/*:/etc/hbase/conf:/usr/hdp/2.2.0.0-2041/hadoop-yarn/lib/hadoop-lzo-0.6.0.2.2.0.0-2041.jar
+然后重启spark之后，即可生效。
+
+
+二、运行程序：
+使用以下命令：
+/usr/hdp/2.2.0.0-2041/spark/bin/spark-submit --master yarn --executor-memory 3g --driver-memory 2g --num-executors 2 --executor-cores 1 --class com.sparkhbase.sparkhbasetest.SparkHbaseTest ~/sparkhbasetest-1.0-SNAPSHOT.jar

@@ -1,0 +1,14 @@
+一、首先设置HADOOP_CLASSPATH环境变量：
+export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/usr/hdp/2.2.0.0-2041/hbase/*:/usr/hdp/2.2.0.0-2041/hbase/lib/*":/etc/hbase/conf;
+
+
+二、运行程序：
+使用以下命令：
+hadoop jar hbasetbdsmaven-1.0-SNAPSHOT.jar com.hbasetest.hbasetbdsmaven.Testhtable <steplen_rownumber> <rownumber>
+
+其中有两个参数：
+steplen_rownumber     表示第几轮步长
+rownumber             表示本次插入多少条，也就是步长
+
+举例：
+steplen_rownumber = 5， rownumber=1000，则表示插入的 start rowkey值为 rowkey_5000, end rowkey值为 rowkey_5999,

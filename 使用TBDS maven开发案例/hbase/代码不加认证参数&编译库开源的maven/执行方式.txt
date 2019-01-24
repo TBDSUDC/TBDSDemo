@@ -1,0 +1,16 @@
+一、首先设置HADOOP_CLASSPATH环境变量：
+export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/usr/hdp/2.2.0.0-2041/hbase/*:/usr/hdp/2.2.0.0-2041/hbase/lib/*":/etc/hbase/conf;
+
+二、设置认证参数
+export hadoop_security_authentication_tbds_username=testuser
+export hbase_security_authentication_tbds_secureid=erh2xzLl1RoU5TDSbZpiaexk7zKBCMtJCNZY
+export hbase_security_authentication_tbds_securekey=TYL2c0ri9CfUZGpKI8WcUiFVJf3aTRUY
+
+
+三、运行程序：
+hadoop jar hbaseopenmaven-1.0-SNAPSHOT.jar com.hbasetest.hbaseopenmaven.Testhtable 172.16.16.4:2181 /hbase-unsecure testtbable0128 10
+
+172.16.16.4:2181 表示zkhost
+/hbase-unsecure 表示zkznode
+testtbable0128 表示想要建立的hbase表名称；
+10 表示你想要插入的rowkey 数量

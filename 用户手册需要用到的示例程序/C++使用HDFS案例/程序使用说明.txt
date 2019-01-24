@@ -1,0 +1,38 @@
+1、设置环境变量
+JAVA_HOME="/usr/jdk64/jdk1.8.0_111"
+JRE_HOME="/usr/jdk64/jdk1.8.0_111/jre"
+HADOOP_HOME="/usr/hdp/2.2.0.0-2041/hadoop"
+CLASSPATH=${JAVA_HOME}/lib:${JRE_HOME}/lib  l
+CLASSPATH=${CLASSPATH}:/usr/hdp/2.2.0.0-2041/hadoop/conf
+CLASSPATH=${CLASSPATH}:`find /usr/hdp/2.2.0.0-2041/hadoop/lib/ | awk '{path=path":"$0}END{print path}'`
+CLASSPATH=${CLASSPATH}:`find /usr/hdp/2.2.0.0-2041/hadoop/share/ | awk '{path=path":"$0}END{print path}'`
+CLASSPATH=${CLASSPATH}:/usr/share/java/mysql-connector-java.jar               
+CLASSPATH=${CLASSPATH}:/usr/hdp/2.2.0.0-2041/hadoop/*.jar
+CLASSPATH=${CLASSPATH}:/etc/hadoop/conf/core-site.xml:/etc/hadoop/conf/hdfs-site.xml
+export CLASSPATH
+
+
+注意：
+（1）如果在集群外服务器，JAVA_HOME、JRE_HOME 需要设置为集群自己的路径；
+（2）需要将 TBDS的hadoop安装目录：/usr/hdp/2.2.0.0-2041/hadoop； 以及配置目录：/etc/hadoop/conf/拷贝到本地服务器。
+
+
+2、设置id、key、user环境变量
+在/etc/profile环境变量里面设置认证参数id、user和key：
+export hadoop_security_authentication_tbds_secureid=a7KNzj5GhQvQBifzgshlTtyfCfUrPIisaQdb
+export hadoop_security_authentication_tbds_username=testuser
+export hadoop_security_authentication_tbds_securekey=OuKjeECY9bmIZk2LVai5uRlGMoWew4lQ
+
+3、编译
+
+#c++make指令  
+g++ write.cpp -I${HADOOP_HOME}/include -L${HADOOP_HOME}/lib/native -lhdfs -Wl,-rpath=${HADOOP_HOME}/lib/native -L${JRE_HOME}/lib/amd64/server -ljvm -Wl,-rpath=${JRE_HOME}/lib/amd64/server -o write  
+
+4、执行
+#写入的示例指令  
+./write 172.16.16.8 /tmp/testlibhdfs.txt "this is a test string to write into hdfs file"
+
+注意：
+上面的ip是TBDS大数据集群的active namenode；
+文件是要创建或者写入的HDFS文件；
+写入的字符串，可以随意填写。

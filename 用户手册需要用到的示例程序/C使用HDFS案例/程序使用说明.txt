@@ -1,0 +1,36 @@
+1、编译程序
+设置环境变量：
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/jdk64/jdk1.8.0_111/jre/lib/amd64/server/
+
+注意：设置动态链接库LD_LIBRARY_PATH变量，jre环境要换成机器自己的jre环境；
+
+编译可执行文件：
+gcc test_c_hadoop.c -I/usr/hdp/2.2.0.0-2041/hadoop/include/ -L/usr/hdp/2.2.0.0-2041/hadoop/lib/native -lhdfs -o test_c_hadoop
+
+注意：
+（1）编译时，include文件使用TBDS集群的 /usr/hdp/2.2.0.0-2041/hadoop/include/；
+（2）动态库，使用TBDS集群的 /usr/hdp/2.2.0.0-2041/hadoop/lib/native
+
+
+
+2、设置身份认证的id、key、user环境变量
+在/etc/profile环境变量里面设置认证参数id、user和key：
+export hadoop_security_authentication_tbds_secureid=a7KNzj5GhQvQBifzgshlTtyfCfUrPIisaQdb
+export hadoop_security_authentication_tbds_username=testuser
+export hadoop_security_authentication_tbds_securekey=OuKjeECY9bmIZk2LVai5uRlGMoWew4lQ
+
+3、运行可执行文件
+设置环境变量：
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/hdp/2.2.0.0-2041/hadoop/lib/native/
+CLASSPATH=${CLASSPATH}:/usr/hdp/2.2.0.0-2041/hadoop/conf
+CLASSPATH=${CLASSPATH}:`find /usr/hdp/2.2.0.0-2041/hadoop/lib/ | awk '{path=path":"$0}END{print path}'`
+CLASSPATH=${CLASSPATH}:`find /usr/hdp/2.2.0.0-2041/hadoop/share/ | awk '{path=path":"$0}END{print path}'`
+CLASSPATH=${CLASSPATH}:/usr/share/java/mysql-connector-java.jar               
+CLASSPATH=${CLASSPATH}:/usr/hdp/2.2.0.0-2041/hadoop/*.jar
+CLASSPATH=${CLASSPATH}:/etc/hadoop/conf/core-site.xml:/etc/hadoop/conf/hdfs-site.xml
+export CLASSPATH
+
+注意：如果是在集群外服务器，需要将 TBDS的hadoop安装目录：/usr/hdp/2.2.0.0-2041/hadoop； 以及配置目录：/etc/hadoop/conf/拷贝到本地服务器。
+
+运行：
+./test_c_hadoop

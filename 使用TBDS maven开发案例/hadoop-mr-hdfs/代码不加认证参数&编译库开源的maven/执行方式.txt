@@ -1,0 +1,32 @@
+一、首先设置HADOOP_CLASSPATH环境变量：
+
+//把需要依赖的 jar 包临时写进 HADOOP_CLASSPATH 环境变量
+export HADOOP_CLASSPATH="$HADOOP_CLASSPATH:/usr/hdp/2.2.0.0-2041/hadoop/*:/usr/hdp/2.2.0.0-2041/hadoop/lib/*":/etc/hadoop/conf;
+
+二、设置认证参数
+两种方法：
+1、设置成为环境变量：
+export hadoop_security_authentication_tbds_secureid=erR76LDEG1QRZJzMNqW8GRqnMLNydJff0UxB
+export hadoop_security_authentication_tbds_username=testuser
+export hadoop_security_authentication_tbds_securekey=Or2p9Tn6u0Qv1Bmy1w2my9FGEzF0UXOP
+2、在core-site.xml设置：
+    <property>
+      <name>hadoop_security_authentication_tbds_secureid</name>
+      <value>erR76LDEG1QRZJzMNqW8GRqnMLNydJff0UxB</value>
+    </property>
+    <property>
+      <name>hadoop_security_authentication_tbds_username</name>
+      <value>testuser</value>
+    </property>
+    <property>
+      <name>hadoop_security_authentication_tbds_securekey</name>
+      <value>Or2p9Tn6u0Qv1Bmy1w2my9FGEzF0UXOP</value>
+    </property>
+
+
+三、执行任务
+
+hadoop jar hdfsmrtest-1.0-SNAPSHOT.jar com.hadooptest.hdfsmrtest.WordCount hdfs://hdfsCluster/tmp/inputfile hdfs://hdfsCluster/tmp/outputfile/0001
+
+hdfs://hdfsCluster/tmp/inputfile 表示输入的文件目录（这里是hdfs目录，不是linux文件系统的本地目录）
+hdfs://hdfsCluster/tmp/outputfile/0001 表示输出的文件目录（这里是hdfs目录，不是linux文件系统的本地目录）

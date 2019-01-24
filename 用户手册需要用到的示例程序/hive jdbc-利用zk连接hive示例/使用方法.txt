@@ -1,0 +1,23 @@
+运行方法一：
+1、首先设置HADOOP_CLASSPATH环境变量：
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/usr/hdp/2.2.0.0-2041/hive/lib/*:/etc/hive/conf;
+
+2、运行程序
+hadoop jar hivejdbcfromzk-1.0-SNAPSHOT.jar com.hivetest.hivejdbcfromzk.HiveJdbcFromZK zkipport dbname username passwd sqlstring
+
+其中5个参数含义：
+zkipport            表示zk 的ip和port
+dbname              表示hive数据库名字
+username            表示用户名（登录portal门户页面的用户）
+passwd              表示用户密码（登录portal门户页面的用户密码）
+sqlstring           表示sql查询语句。由于sql查询语句是由多个string字符串构成的，为了作为一个args参数传递为java程序，需要用""双引号括起来，当做一个参数来使用。
+比如：
+hadoop jar hivejdbcfromzk-1.0-SNAPSHOT.jar com.hivetest.hivejdbcfromzk.HiveJdbcFromZK 172.16.16.71:2181,172.16.16.86:2181,172.16.16.89:2181 testuserdb testuser testuser@test1234 "select count(*) from testtable"
+
+运行方法二：
+java -Djava.ext.dirs=/usr/hdp/2.2.0.0-2041/hive/lib:/usr/hdp/2.2.0.0-2041/hadoop -classpath /etc/hive/conf:./hivejdbcfromzk-1.0-SNAPSHOT.jar com.hivetest.hivejdbcfromzk.HiveJdbcFromZK zkipport dbname username passwd sqlstring
+
+
+
+运行方法三：
+java -classpath ./hivejdbcfromzk-1.0-SNAPSHOT.jar:/usr/hdp/2.2.0.0-2041/hive/lib/*:/usr/hdp/2.2.0.0-2041/hadoop/client/*:/etc/hive/conf com.hivetest.hivejdbcfromzk.HiveJdbcFromZK zkipport dbname username passwd sqlstring

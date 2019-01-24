@@ -1,0 +1,28 @@
+1、设置环境hadoop认证的变量
+通过在 /etc/profile文件设置hadoop认证的环境变量，将认证参数进行设置。详细方法，请参照
+《TBDS4.0.3开发指导手册&用户手册》的2.3.2章节
+
+
+
+
+
+2、登录安装有spark client 和 yarn client的服务器，进入到/usr/hdp/2.2.0.0-2041/spark目录：
+
+cd /usr/hdp/2.2.0.0-2041/spark
+
+运行测试程序，有三种运行方式。具体执行以下命令：
+
+（1） 提交到本地：
+./bin/spark-submit --master local[*] --executor-memory 3g --driver-memory 1g --num-executors 2 --executor-cores 2 --class org.apache.spark.examples.JavaWordCount ./examples/jars/spark-examples_2.10-2.1.0.jar hdfs://hdfsCluster/project/testprogram/inputfile/
+效果：
+
+（2） 提交到yarn-client：
+./bin/spark-submit --master yarn-client --executor-memory 3g --driver-memory 1g --num-executors 2 --executor-cores 2 --class org.apache.spark.examples.JavaWordCount ./examples/jars/spark-examples_2.10-2.1.0.jar hdfs://hdfsCluster/project/testprogram/inputfile/
+效果和上面差不多
+
+（3） 提交到 yarn-cluster集群：
+./bin/spark-submit --master yarn-cluster --executor-memory 3g --driver-memory 1g --num-executors 2 --executor-cores 2 --class org.apache.spark.examples.JavaWordCount ./examples/jars/spark-examples_2.10-2.1.0.jar hdfs://hdfsCluster/project/testprogram/inputfile/
+
+注意：以上几种任务执行提交方式，--executor-memory 3g --driver-memory 1g 都依赖于以下两个参数：
+yarn.scheduler.maximum-allocation-mb 和 yarn.nodemanager.resource.memory-mb，TBDS默认两个参数都是4096MB（4G），
+因此，提交任务的参数必须小于4G。

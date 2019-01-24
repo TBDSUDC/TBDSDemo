@@ -1,0 +1,25 @@
+1、往指定的kafka topic 发送数据
+
+2、export hadoop认证参数
+因为要运行spark程序，所以需要将用户的hadoop的认证参数export到执行环境变量：
+export hadoop_security_authentication_tbds_secureid=换成自己用户的hadoop模块儿id
+export hadoop_security_authentication_tbds_securekey=换成自己用户的hadoop模块儿key
+export hadoop_security_authentication_tbds_username=换成自己用户的hadoop模块儿的用户名
+
+
+3、spark streaming消费kafka数据，执行命令：
+（需要4个参数，分别是topic名称、kafka broker list、用户的kafka模块儿的认证id 和 key）
+
+/usr/hdp/2.2.0.0-2041/spark/bin/spark-submit --master yarn --executor-memory 2g --driver-memory 2g --num-xecutors 3 --executor-cores 1 --class com.tencent.sparkstreaming.kafka.sparkkafkademo.JavaDirectKafkaWordCount /root/sparkkafkademo-1.0-SNAPSHOT.jar <topic名称>  <kafka broker list> <id> <key>
+
+比如：
+/usr/hdp/2.2.0.0-2041/spark/bin/spark-submit --master yarn --executor-memory 2g --driver-memory 2g --num-executors 3 --executor-cores 1 --class com.tencent.sparkstreaming.kafka.sparkkafkademo.JavaDirectKafkaWordCount /root/sparkkafkademo-1.0-SNAPSHOT.jar mktesttopic1115  10.255.0.2:6667,10.255.0.4:6667,10.255.0.7:6667,10.255.0.10:6667  dikJKXBdDCnepNUejSZZryGb6Wk4VZKimGK6  rAjmpvVoCKqBXUu63s4rY3uh6uPuoszN
+
+具体运行spark的excutor参数可以自行设定。
+
+
+4、示例程序说明：
+spark streaming 每5秒钟消费一次kafka数据，然后对消费到的数据做wordcount。
+
+5、注意事项：
+示例代码只是简单说明spark streaming如何消费kafka topic，复杂的业务逻辑需要自己去编写。
