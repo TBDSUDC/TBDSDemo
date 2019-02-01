@@ -1,7 +1,7 @@
 ***
 ## 工程项目说明
 ***
-&#160; &#160; 本eclipse工程主要包含kafka、hadoop（hdfs、mr）、spark、tbds自定义工作流等开发示例，内容是基于tbds的开源组件的简单二次开发，具体示例的操作文档：https://github.com/TBDSUDC/TBDSDemo/tree/master/doc
+&#160; &#160; 本eclipse工程主要包含kafka、hadoop（hdfs、mr）、spark、tbds自定义工作流等开发示例，内容是基于tbds的开源组件的简单二次开发，具体示例的操作说明文档路径：https://github.com/TBDSUDC/TBDSDemo/tree/master/doc <br>
 **demo清单如下：** <br>
 1. kafka 生产消费示例：包含一个producer和consumer程序，一个用来向test_topic发送数据，一个用来从test_topic读取数据
    github代码路径：https://github.com/TBDSUDC/TBDSDemo/tree/master/src/main/java/com/tencent/kafka
