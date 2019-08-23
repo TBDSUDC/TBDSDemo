@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>AccessibilityLintAndroid</id>
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Application SizePerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>CDI (Contexts and Dependency Injection)</id>
+          </State>
+          <State>
+            <id>Chrome OSCorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>ComplianceLintAndroid</id>
+          </State>
+          <State>
+            <id>Concurrency annotation issuesJava</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Data flowJava</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>IconsUsabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>InitializationJava</id>
+          </State>
+          <State>
+            <id>InternationalizationLintAndroid</id>
+          </State>
+          <State>
+            <id>InteroperabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>JSON and JSON5</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Kotlin InteroperabilityInteroperabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>MessagesCorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>PerformanceLintAndroid</id>
+          </State>
+          <State>
+            <id>RESTful Web Service</id>
+          </State>
+          <State>
+            <id>SecurityLintAndroid</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+          <State>
+            <id>TypographyUsabilityLintAndroid</id>
+          </State>
+          <State>
+            <id>UsabilityLintAndroid</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AndroidLintUsingHttp</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+</project>
