@@ -44,14 +44,14 @@ public class KafkaDemo {
 //        properties.load(new BufferedInputStream(new FileInputStream("/opt/cluster_conf/kafka/kafka_conf.properties")));
 
         // hard code config information
-        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "tbds-172-16-16-31:6667");
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "********:6667");
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, "TestConsumerGroup");
 
         //add authentication information directly
         properties.put("security.protocol", "SASL_TBDS");
         properties.put("sasl.mechanism", "TBDS");
-        properties.put("sasl.tbds.secure.id", "9EYzkL6TSPL7Q6qDo7AGEz1sxYQv6OfZBaDX");
-        properties.put("sasl.tbds.secure.key", "xPjbI3ZOVnm5BUJfk2CrCtayOVTELgeP");
+        properties.put("sasl.tbds.secure.id", "********");
+        properties.put("sasl.tbds.secure.key", "********");
 
         return properties;
     }

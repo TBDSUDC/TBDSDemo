@@ -25,12 +25,12 @@ public class TubeConsumerDemo {
 
 
     static {
-        map.put("tube.ha.hosts", "tbds-10-228-128-2:9100,tbds-10-228-128-73:9100,tbds-10-228-128-17:9100");
-        map.put("tube.consumer.group", "CCTV_YSP_FTBFZL_RC_PROD_CCTV_YSP_SJZT_PROD_b_omg_video_2894_sandmliu");
-        map.put("tube.consumer.username", "sandmliu");
-        map.put("tube.consumer.secureId", "Lib68S2KRAFpHsKngz6AojvEbfOSaFSiTOoG");
-        map.put("tube.consumer.secureKey", "ce2OWcS57FUgAPVwBRa6GcL9z4kdz9sc");
-        map.put("tube.consumer.bid", "CCTV_YSP_SJZT_PROD_b_omg_video_2894");
+        map.put("tube.ha.hosts", "********:9100");
+        map.put("tube.consumer.group", "****************");
+        map.put("tube.consumer.username", "********");
+        map.put("tube.consumer.secureId", "********");
+        map.put("tube.consumer.secureKey", "********");
+        map.put("tube.consumer.bid", "********");
         map.put("tube.consumer.isTdMsg", "false");
     }
 

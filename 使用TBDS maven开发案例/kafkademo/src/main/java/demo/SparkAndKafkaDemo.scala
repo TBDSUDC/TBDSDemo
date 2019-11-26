@@ -17,7 +17,7 @@ object SparkAndKafkaDemo {
     /**定义程序运行的名称**/
     val appName = "sparkKafkaDemo";
     val groupId = "test_group"
-    val brokers = "tbds-172-16-16-4:9092";
+    val brokers = "********:9092";
     /**初始化spark conf的信息，采用本地运行模式**/
     val sparkConf = new SparkConf().setAppName(appName);
     val sc = new StreamingContext(sparkConf,Seconds(5));

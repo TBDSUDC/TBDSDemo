@@ -25,12 +25,12 @@ public class KafkaSourceDemo {
     //测试的topic的名字
     private static  final String TEST_TOPIC="testflinktopic";
     //zookeeper的地址
-    private static final String ZK_ADDRESS="tbds-172-16-0-2:2181";
+    private static final String ZK_ADDRESS="********:2181";
     //Kafka的地址
-    private static final String KAFKA_ADDRESS="tbds-172-****:6667";
+    private static final String KAFKA_ADDRESS="********:6667";
     //认证信息的id和key
-    private static final String  SECURRE_ID="053OGS4************************W4STm";
-    private static final String SECURRE_KEY="8qFXU8************ssKF";
+    private static final String  SECURRE_ID="********";
+    private static final String SECURRE_KEY="********";
 
 
     public static void main(String[] args) throws Exception{
