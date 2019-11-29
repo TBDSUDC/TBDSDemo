@@ -18,16 +18,16 @@ import java.util.concurrent.TimeUnit;
 public class HippoConsumerDemo {
 
     //Hipper Controller address
-    private static final String CONTROLLER_IP_LIST="tbds-172-16-16-8:8066";
+    private static final String CONTROLLER_IP_LIST="="**************";:8066";
     //Hipper Borker group
     private static final String GROUP_NAME="test_group001";
     //Hipper Consumer Configure
     private static ConsumerConfig consumerConfig;
     /***Producer****/
     //Hipper topice accessKey(Note: Each topic's key and id are different)
-    private static final String ACCESS_KEY="ogrQBBtkuvmKnnc8nazLBnvzaVMg7uPP";
+    private static final String ACCESS_KEY="="**************";";
     //Hipper topice accessId
-    private static final String ACCESS_ID="lhiYFHQKtbBrqYSeP492sG9XGHUAprkLV6yD";
+    private static final String ACCESS_ID="="**************";";
     //Hipper access user
     private static final String USERNAME="admin";
     //Topic
